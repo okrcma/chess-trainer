@@ -1,0 +1,355 @@
+.board {
+  min-height: 320px;
+  min-width: 320px;
+  aspect-ratio: 1 / 1;
+  height: 80%;
+  position: absolute;
+}
+
+.flipped {
+  transform: scale(-1);
+}
+
+.square {
+  background-size: 100% 100%;
+  aspect-ratio: 1 / 1;
+  height: 12.5%;
+  width: 12.5%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.square-dark {
+  background-color: #86a666;
+}
+
+.square-dark-highlighted {
+  background-color: #bbcb2b;
+}
+
+.square-light {
+  background-color: #ffffdd;
+}
+
+.square-light-highlighted {
+  background-color: #f7f769;
+}
+
+.hint {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-clip: content-box;
+  padding: 4.2%;
+}
+
+.capture-hint {
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.square-a1 {
+  translate: 0% 700%;
+}
+
+.square-b1 {
+  translate: 100% 700%;
+}
+
+.square-c1 {
+  translate: 200% 700%;
+}
+
+.square-d1 {
+  translate: 300% 700%;
+}
+
+.square-e1 {
+  translate: 400% 700%;
+}
+
+.square-f1 {
+  translate: 500% 700%;
+}
+
+.square-g1 {
+  translate: 600% 700%;
+}
+
+.square-h1 {
+  translate: 700% 700%;
+}
+
+.square-a2 {
+  translate: 0% 600%;
+}
+
+.square-b2 {
+  translate: 100% 600%;
+}
+
+.square-c2 {
+  translate: 200% 600%;
+}
+
+.square-d2 {
+  translate: 300% 600%;
+}
+
+.square-e2 {
+  translate: 400% 600%;
+}
+
+.square-f2 {
+  translate: 500% 600%;
+}
+
+.square-g2 {
+  translate: 600% 600%;
+}
+
+.square-h2 {
+  translate: 700% 600%;
+}
+
+.square-a3 {
+  translate: 0% 500%;
+}
+
+.square-b3 {
+  translate: 100% 500%;
+}
+
+.square-c3 {
+  translate: 200% 500%;
+}
+
+.square-d3 {
+  translate: 300% 500%;
+}
+
+.square-e3 {
+  translate: 400% 500%;
+}
+
+.square-f3 {
+  translate: 500% 500%;
+}
+
+.square-g3 {
+  translate: 600% 500%;
+}
+
+.square-h3 {
+  translate: 700% 500%;
+}
+
+.square-a4 {
+  translate: 0% 400%;
+}
+
+.square-b4 {
+  translate: 100% 400%;
+}
+
+.square-c4 {
+  translate: 200% 400%;
+}
+
+.square-d4 {
+  translate: 300% 400%;
+}
+
+.square-e4 {
+  translate: 400% 400%;
+}
+
+.square-f4 {
+  translate: 500% 400%;
+}
+
+.square-g4 {
+  translate: 600% 400%;
+}
+
+.square-h4 {
+  translate: 700% 400%;
+}
+
+.square-a5 {
+  translate: 0% 300%;
+}
+
+.square-b5 {
+  translate: 100% 300%;
+}
+
+.square-c5 {
+  translate: 200% 300%;
+}
+
+.square-d5 {
+  translate: 300% 300%;
+}
+
+.square-e5 {
+  translate: 400% 300%;
+}
+
+.square-f5 {
+  translate: 500% 300%;
+}
+
+.square-g5 {
+  translate: 600% 300%;
+}
+
+.square-h5 {
+  translate: 700% 300%;
+}
+
+.square-a6 {
+  translate: 0% 200%;
+}
+
+.square-b6 {
+  translate: 100% 200%;
+}
+
+.square-c6 {
+  translate: 200% 200%;
+}
+
+.square-d6 {
+  translate: 300% 200%;
+}
+
+.square-e6 {
+  translate: 400% 200%;
+}
+
+.square-f6 {
+  translate: 500% 200%;
+}
+
+.square-g6 {
+  translate: 600% 200%;
+}
+
+.square-h6 {
+  translate: 700% 200%;
+}
+
+.square-a7 {
+  translate: 0% 100%;
+}
+
+.square-b7 {
+  translate: 100% 100%;
+}
+
+.square-c7 {
+  translate: 200% 100%;
+}
+
+.square-d7 {
+  translate: 300% 100%;
+}
+
+.square-e7 {
+  translate: 400% 100%;
+}
+
+.square-f7 {
+  translate: 500% 100%;
+}
+
+.square-g7 {
+  translate: 600% 100%;
+}
+
+.square-h7 {
+  translate: 700% 100%;
+}
+
+.square-a8 {
+  translate: 0% 0%;
+}
+
+.square-b8 {
+  translate: 100% 0%;
+}
+
+.square-c8 {
+  translate: 200% 0%;
+}
+
+.square-d8 {
+  translate: 300% 0%;
+}
+
+.square-e8 {
+  translate: 400% 0%;
+}
+
+.square-f8 {
+  translate: 500% 0%;
+}
+
+.square-g8 {
+  translate: 600% 0%;
+}
+
+.square-h8 {
+  translate: 700% 0%;
+}
+
+.piece-bp {
+  background-image: url("img/piece/lichess-merida/bP.svg");
+}
+
+.piece-br {
+  background-image: url("img/piece/lichess-merida/bR.svg");
+}
+
+.piece-bn {
+  background-image: url("img/piece/lichess-merida/bN.svg");
+}
+
+.piece-bb {
+  background-image: url("img/piece/lichess-merida/bB.svg");
+}
+
+.piece-bq {
+  background-image: url("img/piece/lichess-merida/bQ.svg");
+}
+
+.piece-bk {
+  background-image: url("img/piece/lichess-merida/bK.svg");
+}
+
+.piece-wp {
+  background-image: url("img/piece/lichess-merida/wP.svg");
+}
+
+.piece-wr {
+  background-image: url("img/piece/lichess-merida/wR.svg");
+}
+
+.piece-wn {
+  background-image: url("img/piece/lichess-merida/wN.svg");
+}
+
+.piece-wB {
+  background-image: url("img/piece/lichess-merida/wB.svg");
+}
+
+.piece-wQ {
+  background-image: url("img/piece/lichess-merida/wQ.svg");
+}
+
+.piece-wK {
+  background-image: url("img/piece/lichess-merida/wK.svg");
+}
