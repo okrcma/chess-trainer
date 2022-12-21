@@ -10,6 +10,10 @@ function ChessGame(boardElem) {
   function handleSquareClick(square) {
     document.getElementById("demo").innerHTML =
       square + " " + boardWidget.getPiece(square);
+    if (boardState.isCheckmate())
+      document.getElementById("demo").innerHTML += " checkmate";
+    if (boardState.isStalemate())
+      document.getElementById("demo").innerHTML += " stalemate";
 
     boardWidget.removeAllHints();
     if (selectedSquare !== null) boardWidget.unhighlightSquare(selectedSquare);
@@ -23,7 +27,7 @@ function ChessGame(boardElem) {
       selectedSquare !== null &&
       boardState.getLegalMoves(selectedSquare).includes(square)
     ) {
-      boardState.playPseudoLegalMove(selectedSquare, square);
+      boardState.playLegalMove(selectedSquare, square);
       updatePieces();
 
       boardWidget.unhighlightAllSquares();

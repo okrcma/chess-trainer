@@ -3,9 +3,13 @@
  *
  * Keeps track of all variables needed to determine whether a move is valid
  * and whether the game has ended.
- * 
- * // TODO checks for checkmate and all kinds of draws
- * 
+ *
+ * The game can only end in checkmate or stalemate (when there are no legal
+ * moves). Other forms of draws are not implemented, such as a dead position,
+ * a threefold repetition, or the fifty-move rule.
+ *
+ * // TODO pawn promotion
+ *
  */
 function BoardState() {
   /** Current position of pieces on the board.
@@ -304,6 +308,43 @@ function BoardState() {
   }
 
   /**
+   * Checks whether the player of the given color has any legal moves left.
+   *
+   * @param {string} color Color as string "w" or "b".
+   * @returns {boolean} True if the player has at least one legal move,
+   *     false otherwise.
+   */
+  function playerHasLegalMoves(color) {
+    for (let file = 0; file < 8; file++) {
+      for (let rank = 0; rank < 8; rank++) {
+        if (position[file][rank][0] !== color) continue;
+        if (getLegalMoves(squareFromFileRank(file, rank)).length > 0)
+          return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Checks whether the game is in a state of checkmate.
+   *
+   * @returns {boolean} True if there is a checkmate on the board,
+   *     false otherwise.
+   */
+  function isCheckmate() {
+    return !playerHasLegalMoves(activeColor) && kingIsInCheck(activeColor);
+  }
+
+  /**
+   * Checks whether the game is in a state of stalemate.
+   *
+   * @returns {boolean} True if the game is in stalemate, false otherwise.
+   */
+  function isStalemate() {
+    return !playerHasLegalMoves(activeColor) && !kingIsInCheck(activeColor);
+  }
+
+  /**
    * Returns an array of squares to where it is pseudo-legal to move from
    * the given square considering the current board state.
    *
@@ -350,6 +391,25 @@ function BoardState() {
   }
 
   /**
+   * Play a legal move from one square to another.
+   *
+   * This method moves the pieces and also updates all the other variables
+   * keeping the consistent board state.
+   *
+   * @param {string} fromSquare Any valid string square coordinates.
+   * @param {string} toSquare Valid string square coordinates which together
+   *    with the from-square represent a legal move.
+   */
+  function playLegalMove(fromSquare, toSquare) {
+    if (!moveIsLegal(fromSquare, toSquare)) {
+      console.log(`Move from ${fromSquare} to ${toSquare} is not legal.`);
+      return;
+    }
+
+    playPseudoLegalMove(fromSquare, toSquare);
+  }
+
+  /**
    * Play a pseudo legal move from one square to another.
    *
    * This method moves the pieces and also updates all the other variables
@@ -368,6 +428,7 @@ function BoardState() {
     }
 
     let fromPiece = _getPieceOnSquare(fromSquare);
+    let toPiece = _getPieceOnSquare(toSquare);
 
     // swap active player color
     if (activeColor === "w") activeColor = "b";
@@ -403,7 +464,12 @@ function BoardState() {
     numberOfFullMoves++;
 
     // update half moves counter
-    // TODO
+    if (
+      (toPiece !== "ee" && fromPiece[0] !== toPiece[0]) ||
+      fromPiece[1] === "p"
+    )
+      numberOfHalfMoves = 0;
+    else numberOfHalfMoves++;
 
     // update king square
     if (fromPiece === "wk") whiteKingSquare = toSquare;
@@ -880,9 +946,12 @@ function BoardState() {
     getActivePlayer,
     squareHasPieceOfActivePlayer,
     getPieceOnSquare,
-    kingIsInCheck,
     getLegalMoves,
+    playLegalMove,
     playPseudoLegalMove,
+    kingIsInCheck,
+    isCheckmate,
+    isStalemate,
     getFEN,
   };
 }
