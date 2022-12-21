@@ -8,7 +8,7 @@
  * moves). Other forms of draws are not implemented, such as a dead position,
  * a threefold repetition, or the fifty-move rule.
  *
- * // TODO pawn promotion
+ * There is no pawn promotion.
  *
  */
 function BoardState() {
@@ -243,11 +243,26 @@ function BoardState() {
    *    move from the given square.
    */
   function getLegalMoves(square) {
+    let piece = _getPieceOnSquare(square);
     let legalMoves = [];
     for (let toSquare of getPseudoLegalMoves(square)) {
-      // TODO checks for castles
-      if (!kingWouldBeInCheck(activeColor, square, toSquare))
-        legalMoves.push(toSquare);
+      // check for would-be check in to-square
+      if (kingWouldBeInCheck(activeColor, square, toSquare)) continue;
+      // check for would-be checks on passing squares when castling
+      if (
+        piece[1] === "k" &&
+        toSquare[0] === "c" &&
+        kingWouldBeInCheck(activeColor, square, "d" + toSquare[1])
+      )
+        continue;
+      if (
+        piece[1] === "k" &&
+        toSquare[0] === "g" &&
+        kingWouldBeInCheck(activeColor, square, "f" + toSquare[1])
+      )
+        continue;
+
+      legalMoves.push(toSquare);
     }
     return legalMoves;
   }
@@ -357,7 +372,7 @@ function BoardState() {
    */
   function getPseudoLegalMoves(square) {
     let piece = _getPieceOnSquare(square);
-    if (piece === "ee") return [];
+    if (piece === "ee" || piece[0] !== activeColor) return [];
 
     switch (piece[1]) {
       case "p":
