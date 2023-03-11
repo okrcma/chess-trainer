@@ -3,17 +3,27 @@
     <link rel="stylesheet" href="widget/board.css" />
     <script src="widget/board.js"></script>
     <script src="chess/chess.js"></script>
-    <script src="app/app.js"></script>
+    <script src="app/squares.js"></script>
+    <script src="app/standard.js"></script>
+
+    <script>
+      function main() {
+        loadSquaresApp();
+      }
+
+      function loadStandardApp() {
+        loadStandard(document.getElementById("app"));
+      }
+
+      function loadSquaresApp() {
+        loadSquares(document.getElementById("app"));
+      }
+    </script>
   </head>
 
   <body onload="main()">
-    <div id="demo">hello</div>
-    <button onclick="game.flipBoard()">Flip</button>
-    <div id="board"></div>
-    <script>
-      function main() {
-        game = new ChessGame(document.getElementById("board"));
-      }
-    </script>
+    <a href="javascript:loadSquaresApp();">squares</a>
+    <a href="javascript:loadStandardApp();">standard</a>
+    <div id="app-container"><div id="app"></div></div>
   </body>
 </html>
