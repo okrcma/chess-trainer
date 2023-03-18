@@ -1,18 +1,18 @@
 <html>
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-        <link rel="stylesheet" href="widget/board.css" />
-        <script src="widget/board.js"></script>
-        <script src="app/squares/squares.js"></script>
-        <script>
-            $("#board").ready(function() {
-                new SquaresTrainer(document.getElementById("board"));
-            })
-        </script>
-    </head>
-    <body>
-        <div id="square"></div>
-        <button onclick="game.flipBoard()">Flip</button>
-        <div id="board"></div>
-    </body>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="widget/board.css" />
+    <script src="widget/board.js"></script>
+    <script src="app/squares/squares.js"></script>
+    <script>
+      $("#board").ready(function () {
+        new SquaresTrainer(document.getElementById("board"));
+      });
+    </script>
+  </head>
+  <body>
+    <div id="square"></div>
+    <button onclick="game.flipBoard()">Flip</button>
+    <div id="board"></div>
+  </body>
 </html>
