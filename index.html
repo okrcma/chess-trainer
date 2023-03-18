@@ -1,22 +1,17 @@
 <html>
   <head>
-    <link rel="stylesheet" href="widget/board.css" />
-    <script src="widget/board.js"></script>
-    <script src="chess/chess.js"></script>
-    <script src="app/squares.js"></script>
-    <script src="app/standard.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script>
       function main() {
         loadSquaresApp();
       }
 
       function loadStandardApp() {
-        loadStandard(document.getElementById("app"));
+        $("#app").load("app/standard/standard.html")
       }
 
       function loadSquaresApp() {
-        loadSquares(document.getElementById("app"));
+        $("#app").load("app/squares/squares.html")
       }
     </script>
   </head>

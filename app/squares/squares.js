@@ -1,12 +1,3 @@
-function loadSquares(appElem) {
-  appElem.innerHTML = `
-      <div id="square">bla</div>
-      <button onclick="game.flipBoard()">Flip</button>
-      <div id="board"></div>
-    `;
-  game = new SquaresTrainer(document.getElementById("board"));
-}
-
 function SquaresTrainer(boardElem) {
   var boardWidget = new BoardWidget(boardElem);
   boardWidget.initialize();

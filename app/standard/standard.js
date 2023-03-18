@@ -1,12 +1,3 @@
-function loadStandard(appElem) {
-  appElem.innerHTML = `
-    <div id="demo">hello</div>
-    <button onclick="game.flipBoard()">Flip</button>
-    <div id="board"></div>
-  `;
-  game = new ChessGame(document.getElementById("board"));
-}
-
 function ChessGame(boardElem) {
   var boardWidget = new BoardWidget(boardElem);
   boardWidget.initialize();
